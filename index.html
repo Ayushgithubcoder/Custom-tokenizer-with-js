@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Coustom Tokenizer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Tokenizer Demo</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button id="encodeBtn">Encode</button>
-    <textarea id="inputText" placeholder="Enter text here"></textarea>
-    <button id="decodeBtn">Decode</button>
-    <textarea id="outputText" placeholder="Output will appear here"></textarea>
-    <h1>Coustom Tokenizer</h1>
+    <div class="tokenizer-container">
+      <h2>Random Tokenizer</h2>
+      <textarea id="inputText" placeholder="Enter text here..."></textarea>
+      <div class="button-group">
+        <button id="encodeBtn">Encode</button>
+        <button id="decodeBtn">Decode</button>
+      </div>
+      <textarea
+        id="outputText"
+        placeholder="Output will appear here..."
+        readonly
+      ></textarea>
+    </div>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>

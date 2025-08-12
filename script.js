@@ -1,12 +1,20 @@
 function createTokenizer(text) {
   const words = text.split(/\W+/);
   const vocab = { "<UNK>": 0, "<PAD>": 1 };
-  let index = 2;
+
+  const usedTokens = new Set(Object.values(vocab));
 
   words.forEach((word) => {
-    if (!vocab[word]) {
-      vocab[word] = index;
-      index++;
+    if (word && !vocab[word]) {
+      let randomToken;
+
+      do {
+        randomToken = Math.floor(Math.random() * 9998) + 2;
+      } while (usedTokens.has(randomToken));
+
+      vocab[word] = randomToken;
+
+      usedTokens.add(randomToken);
     }
   });
 
@@ -26,15 +34,29 @@ const encodeBtn = document.getElementById("encodeBtn");
 const decodeBtn = document.getElementById("decodeBtn");
 const outputText = document.getElementById("outputText");
 
+let lastTokenizer = {};
+
 encodeBtn.addEventListener("click", () => {
   const text = inputText.value;
-  const tokenizer = createTokenizer(text);
-  const encoded = text.split(/\W+/).map((word) => tokenizer[word] || 0);
+
+  lastTokenizer = createTokenizer(text);
+  const encoded = text
+    .split(/\W+/)
+    .filter((word) => word)
+    .map((word) => lastTokenizer[word] || 0);
   outputText.value = JSON.stringify(encoded, null, 2);
 });
 
 decodeBtn.addEventListener("click", () => {
-  const encoded = JSON.parse(outputText.value);
-  const tokenizer = createTokenizer(inputText.value);
-  outputText.value = decode(encoded, tokenizer);
+  if (outputText.value === "") {
+    alert("Please encode some text first!");
+    return;
+  }
+  try {
+    const encoded = JSON.parse(outputText.value);
+
+    outputText.value = decode(encoded, lastTokenizer);
+  } catch (e) {
+    alert("Invalid format in the output box. Please encode again.");
+  }
 });

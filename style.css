@@ -1,60 +1,67 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #101011;
-  color: #cac0c0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  background-color: #000;
+  background-image: radial-gradient(
+    ellipse at center,
+    hsl(0, 100%, 15%) 0%,
+    #000000 75%
+  );
+  color: #e0e0e0;
   margin: 0;
   padding: 2rem;
   display: flex;
-  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
 .tokenizer-container {
-  background-color: #ffffff;
+  background-color: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
   width: 90%;
   max-width: 600px;
   text-align: center;
 }
 
-h1 {
-  color: #1a73e8;
+h2 {
+  color: #ff4d4d;
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 2rem;
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
 }
 
 textarea {
   width: 100%;
   height: 120px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   border-radius: 8px;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
   box-sizing: border-box;
   resize: vertical;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 textarea:focus {
   outline: none;
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
-}
-
-#outputText {
-  font-family: "Courier New", Courier, monospace;
-  background-color: #f8f9fa;
+  border-color: #ff4d4d;
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.3);
 }
 
 .button-group {
-  /* display: flex; */
-  margin: 20px;
+  display: flex;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 1.5rem;
@@ -62,20 +69,23 @@ textarea:focus {
 
 button {
   padding: 12px 24px;
-  border: none;
+  border: 1px solid #8b0000;
   border-radius: 8px;
-  background-color: #1a73e8;
+  background-color: #6e0000;
   color: white;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease,
+    box-shadow 0.2s;
 }
 
 button:hover {
-  background-color: #155ab6;
+  background-color: #8b0000;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
 }
 
 button:active {
   transform: scale(0.98);
+  background-color: #a52a2a;
 }
